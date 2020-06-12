@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use App\Lib\Crypt\Aes;
+use App\Lib\Crypt\Rsa;
+
+class TestController extends Controller
+{
+	private $private = '-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCpJG9ba5CqYFEw\nXFV8Rk2Y6hJuOW9hCTkVkQ7rGGx+KIQSuhdt2WAJIudGsdTLl0jv9gdI3xyvRJxL\npUBnYQkcnFC7GiCvGNzv3wyL78roJjHehpUN9PkHgRQPu+cgYKfhMY20cbEoct1z\n7h/gsFOb3Y7P0hu1qD1WS2bUW2xaQBrdGiQH7CfIXQXcmQrLbwQTf7YKxlrj8Cod\nswttRcM+hjZUZlLWAsf4vCWNLbWrzn+NVW8+R2g5gcFnNlDcBEZ5eDqDhv14vkSO\ncgW4eZRSAjL7QWWlDtEhqqi4diiGO93V0wyyScxc7tDKP4k+JLFZxpSQL8H31dYO\n1bL3ilLdAgMBAAECggEAfPKSZIlgc8v1DfGXoNdaaVS4yr4Y/ijPB5SB3b/MHaIW\ndrMLrbU/0V/8U2f413Dpi4JGvVk8GmlnwCXSHsw66+y5Yo4ZiN+oDnbKEPHSBY55\nlnX61DWcZSPASyM2yN8+BQgTMzItecDowMQuvk/jY6fW4MTIfXhL31ySGNt0fnHb\nHAUp4x7iDzIjhfn5fFjzbcGldtOo6xMndK2aKIf+2cm7MXnaNFC5uE0nQ8fv0KGK\n1G5fnST7l3dKfADLD7/P3PqLPNV2SwirfgsyHRi9ok0+c9pj+dEuT2jNeG9vadAb\nSvpKC0ofuqQvvGroEZyEaB6IkI3sdWYQKyYl0I/KLQKBgQDVhahfq08gNbpSG+0D\nEMJ+gOj38Rep6kDhN/pZhquMbpAfXKjwz9y5SNbws+0LRkQYuXKfWst2NaqSqO6C\nVgZ2t5/wf/zE/2N9sGEW0JpCyUjijh/kVYv0E/C2WFs6Fbh7vEGQS6gyddvsOWsA\ndXUp7lx4gPiPwJkrnL58/qS6NwKBgQDKypXo7lIofTlcABjR1tL0dyJNotkjW6Ao\noxw76EXFSJ21fEILux6zqYIgEVsATMExGR5Y+nIyLNviPMDkfdKJtzQfL4aWUeb5\nyRijA2AJUrr94JuDI5r/GqpDgWMopDL1vxMRzOROoFFVu5mhas6/jqMXzruwJ4o4\nMLXPIBkBiwKBgQCYku9jnVfnHj1LWuUboag5GQhf04kjQ16lEIj13ANNT9vwbRfT\nK9T/GQtt6EPkIIucVzeOoyRsDaEbN1dnDu2De2bwRaRraErBj31w/hKc0pQgP4qO\ncIqXGICS68QUV10CHd2DrGw90nYZ8FWDeGsGUWsGOLJkli1dOp3rV1KCNQKBgGXt\n7+3VpEwfrS4WCmOm0//2xbI6MWQ5UMY8PhvKgw9HkaXAID5fPm5VvEc8Ef6TleOE\n2aEluTKJI7iSiu4OZD2+bR9jtwVlg3B36L8/Gg11nPGw7Nm8ktK4523o4htydP7a\nnM4sq3Dt2hP6qJze366fFlEII4TGSw41RZ0naApDAoGAAXhQ8yBaHyARE/QGhgog\nnAU7WBiXvdoOBfQE7tY4x7UH9RQsjbkMF8r2hdL+4tRpwstrfjQUTTeLK1+C52rU\nHnURxVwLOI/MZfFs4GOj618FSFiMmjKt/eJB3qfFczrTLH6L+44dkDc7BFV1c2WC\nbMdXA/fc4WH350opCr8GYHc=\n-----END PRIVATE KEY-----\n';
+
+	private $public = '-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAqSRvW2uQqmBRMFxVfEZN\nmOoSbjlvYQk5FZEO6xhsfiiEEroXbdlgCSLnRrHUy5dI7/YHSN8cr0ScS6VAZ2EJ\nHJxQuxogrxjc798Mi+/K6CYx3oaVDfT5B4EUD7vnIGCn4TGNtHGxKHLdc+4f4LBT\nm92Oz9Ibtag9Vktm1FtsWkAa3RokB+wnyF0F3JkKy28EE3+2CsZa4/AqHbMLbUXD\nPoY2VGZS1gLH+LwljS21q85/jVVvPkdoOYHBZzZQ3ARGeXg6g4b9eL5EjnIFuHmU\nUgIy+0FlpQ7RIaqouHYohjvd1dMMsknMXO7Qyj+JPiSxWcaUkC/B99XWDtWy94pS\n3QIDAQAB\n-----END PUBLIC KEY-----\n';
+
+    public function getPublicKey()
+    {
+    	$keys = new Rsa();
+    	return $keys->GenerateKey();
+    }
+}
