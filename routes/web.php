@@ -15,11 +15,12 @@
 
 Auth::routes(['verify'=>true]);
 
-Route::get('/', 'HomeController@index')->name('root');
+Route::get('/', 'TopicsController@index')->name('root');
 
 Route::resource('users','UsersController');
 
 Route::resource('topics', 'TopicsController');
+
 Route::post('topics/upload_image', 'TopicsController@uploadImage')->name('topics.upload_image');
 Route::get('topics/{topic}/{slug?}', 'TopicsController@show')->name('topics.show');
 

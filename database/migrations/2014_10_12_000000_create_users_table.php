@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('introduction')->nullable();
             $table->integer('notification_count')->unsigned()->default(0);
+            $table->timestamp('last_actived_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
