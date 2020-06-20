@@ -1,2 +1,0 @@
-# laravel-flarum
-laravel bbs
